@@ -1,16 +1,14 @@
 "use strict";
 
-let paths = {
-    getAdmin: route('POST', '/Admin').generate()
-};
+const axios = require('axios')
 
-function route(method,address) {
-    data = {
+module.exports = function route(method,address) {
+    let route = {
         method,
         address
     }
     return {
-        data,
+        route,
         before: () => {
 
         },
@@ -18,13 +16,9 @@ function route(method,address) {
 
         },
         generate: () => (data) =>  axios({
-                    method: data.method,
-                    url: data.address,
-                    data: data
+                    method: route.method,
+                    url: route.address,
+                    data
                 })
     }
-}
-
-module.exports = {
-    route
 }
