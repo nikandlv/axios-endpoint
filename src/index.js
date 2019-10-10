@@ -4,6 +4,11 @@ function makeEndpoint(paths) {
 
 }
 
+function generate() {
+
+}
+
 module.exports = {
-    makeEndpoint
+    makeEndpoint,
+    generate
 }
