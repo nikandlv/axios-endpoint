@@ -1,20 +1,27 @@
 "use strict";
 
-let paths = {};
+let paths = {
+    getAdmin: route('POST', '/Admin')
+};
 
-function makeEndpoint(paths) {
+function route(method,address) {
+    data = {
 
-}
+    }
+    return {
+        data,
+        before: () => {
 
-function generate() {
-    let endpoint = {}
-    Object.keys(paths).forEach(key => {
-        endpoint[key] = paths[key]
-    });
-    return endpoint;
+        },
+        after: () => {
+
+        },
+        generate: () => {
+
+        }
+    }
 }
 
 module.exports = {
-    makeEndpoint,
-    generate
+    route
 }
