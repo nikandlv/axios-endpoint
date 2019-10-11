@@ -1,9 +1,14 @@
 var assert = require('assert');
 var route = require('../src/index')
 
+const axios = require('axios')
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
 let endpoint = {
-    getTodos: route('GET','https://jsonplaceholder.typicode.com/todos/1').generate()
+    getTodos: route('GET','/todos/1').generate()
 }
+
 describe('Route', () => {
     describe('Simple Request', () => {
         it('Should get todos with status code 200', () => {
