@@ -4,7 +4,7 @@
   "description": "Scalable and easy to use axios arch",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/nikandlv/axios-endpoint#readme",
   "dependencies": {
     "axios": "^0.19.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1"
   }
 }
