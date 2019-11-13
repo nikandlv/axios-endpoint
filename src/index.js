@@ -31,6 +31,9 @@ class Bundle {
                 data
             }).then(_ => {
                 afterCallback()
+            }).catch(error => {
+                afterCallback()
+                throw(error)
             })
         }
     }

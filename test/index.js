@@ -27,7 +27,7 @@ describe('Route', () => {
             })
         })
     })
-    it('Should get todos with before request', () => {
+    it('Should get todos with before request hook', () => {
         endpoint.getTodosBefore().then(data => {
             console.log('ok')
             assert.equal(data.status, 200)
@@ -35,7 +35,7 @@ describe('Route', () => {
             console.log('failed')
         })
     })
-    it('Should get todos with after request', () => {
+    it('Should get todos with after request hook', () => {
         endpoint.getTodosAfter().then(data => {
             console.log('ok')
             assert.equal(data.status, 200)
