@@ -9,9 +9,11 @@ axios.defaults.baseURL = 'http://zoomit.ir';
 let endpoint = {
     getTodos: route('GET','/todos/1').generate(),
     getTodosBefore: route('GET','/todos/1').before(() => {
-        console.log('ok gonna fetch now!')
+        console.log('gonna fetch now!')
+    }).generate(),
+    getTodosAfter: route('GET','/todos/1').after(() => {
+        console.log('this is gonna run after!')
     }).generate()
-
 }
 
 describe('Route', () => {
@@ -25,8 +27,16 @@ describe('Route', () => {
             })
         })
     })
-    it('Should get todos with before callback', () => {
+    it('Should get todos with before request', () => {
         endpoint.getTodosBefore().then(data => {
+            console.log('ok')
+            assert.equal(data.status, 200)
+        }).catch(error => {
+            console.log('failed')
+        })
+    })
+    it('Should get todos with after request', () => {
+        endpoint.getTodosAfter().then(data => {
             console.log('ok')
             assert.equal(data.status, 200)
         }).catch(error => {
