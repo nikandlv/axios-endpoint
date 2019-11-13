@@ -3,8 +3,7 @@ var route = require('../src/index')
 
 const axios = require('axios')
 
-//axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
-axios.defaults.baseURL = 'http://zoomit.ir';
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 let endpoint = {
     getTodos: route('GET','/todos/1').bundle(),
