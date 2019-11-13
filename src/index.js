@@ -20,7 +20,7 @@ class Bundle {
         return this
     }
 
-    generate() {
+    bundle() {
         const beforeCallback = this.beforeCallback || (() => {});
         const afterCallback = this.afterCallback || (() => {});
         return (data) =>  {
