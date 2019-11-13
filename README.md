@@ -87,6 +87,12 @@ endpoint
   });
 ```
 
+### Callback hooks
+
+`before` runs exactly before making the request
+
+`after` runs exactly after making the request
+
 ### Run tests
 
 ```bash
