@@ -7,18 +7,13 @@ module.exports = function route(method,address) {
         method,
         address
     }
-    return {
+    let bundle = {
         route,
-        before: () => {
-
-        },
-        after: () => {
-
-        },
-        generate: () => (data) =>  axios({
-                    method: route.method,
-                    url: route.address,
-                    data
-                })
-    }
+    };
+    bundle.generate = () => (data) =>  axios({
+        method: route.method,
+        url: route.address,
+        data
+    })
+    return bundle
 }
