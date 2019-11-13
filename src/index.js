@@ -29,8 +29,9 @@ class Bundle {
                 method: this.route.method,
                 url: this.route.address,
                 data
-            }).then(_ => {
+            }).then(data => {
                 afterCallback()
+                return data
             }).catch(error => {
                 afterCallback()
                 throw(error)
