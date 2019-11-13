@@ -60,4 +60,15 @@ describe('Route', () => {
         })
     })
 
+    describe('Simple request with before and after hook', () => {
+        it('Should get todos with before and after request hook', () => {
+            endpoint.getTodosBeforeAfter().then(data => {
+                console.log('ok')
+                assert.equal(data.status, 200)
+            }).catch(error => {
+                console.log('failed')
+            })
+        })
+    })
+
 })
