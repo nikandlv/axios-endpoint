@@ -10,37 +10,91 @@ npm i axios-endpoint
 
 ### Usage
 
-
 #### Import it
+
 ```javascript
-let route = require('axios-endpoint')
-```
-##### or ES6
-```javascript
-import route from 'axios-endpoint'
+let route = require("axios-endpoint");
+// es6
+import route from "axios-endpoint";
 ```
 
-#### Configure axios as you like
+#### (Optional) Configure axios as you like
+
 ```javascript
-const axios = require('axios')
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+const axios = require("axios");
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 ```
 
 #### Use it
+
 ```javascript
 let endpoint = {
-    getTodos: route('GET','/todos/').generate(),
-}
+  getTodos: route("GET", "/todos/1").bundle(),
 
-endpoint.getTodos().then(response => {
-    console.log(response)
-}).catch(error => {
-    console.error(error)
-})
+  getTodosBefore: route("GET", "/todos/1")
+    .before(() => {
+      console.log("this is gonna run before the request!");
+    })
+    .bundle(),
 
+  getTodosAfter: route("GET", "/todos/1")
+    .after(() => {
+      console.log("this is gonna run after the request!");
+    })
+    .bundle(),
+
+  getTodosBeforeAfter: route("GET", "/todos/1")
+    .before(() => {
+      console.log("this is gonna run before the request!");
+    })
+    .after(() => {
+      console.log("this is gonna run after the request!");
+    })
+    .bundle()
+};
+
+endpoint
+  .getTodos()
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+endpoint
+  .getTodosBefore()
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+endpoint
+  .getTodosAfter()
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+endpoint
+  .getTodosBeforeAfter()
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 ```
 
+### Callback hooks
+
+`before` runs exactly before making the request
+
+`after` runs exactly after making the request
+
 ### Run tests
+
 ```bash
 npm run test
 ```
